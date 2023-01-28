@@ -21,3 +21,17 @@ where Customers.id not in (
   select customerId
   from Orders
 )
+
+-- 1378. Replace Employee ID with the Unique Identifier
+select EmployeeUNI.unique_id, Employees.name
+from Employees
+left join EmployeeUNI
+on EmployeeUNI.id = Employees.unique_id
+
+
+-- 2356. Number of Unique subjects taught by each teacher
+select teacher_id, count(distinct subject_id) as 'cnt'
+from Teacher
+group by teacher_id
+
+-- 
