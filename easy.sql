@@ -55,3 +55,23 @@ from Students
 where Students.department_id not in (select id from Departments)
 
 -- 1571. Warehouse Manager
+select w.name as 'warehouse_name', sum(w.units * p.Width * p.Height * p.Length) as 'volume'
+from Warehouse as w, Products as p
+where w.product_id = p.product_id
+group by w.name
+
+-- 1821. Find customers with positive revenuw this year
+select customer_id
+from Customers
+where year = '2021' and revenue > 0
+
+-- 1693. Daily leads and partners
+select date_id, make_name, count(distinct lead_id) as 'unique_leads', count(distinct partner_id) as 'unique_partners'
+from DailySales
+group by date_id, make_name
+
+-- 2338. All the matches of the league
+select a.team_name as 'home_team', b.team_name as 'away_team'
+from Teams as a, Teams as b
+where a.team_name <> b.team_name
+
