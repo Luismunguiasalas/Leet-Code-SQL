@@ -75,3 +75,27 @@ select a.team_name as 'home_team', b.team_name as 'away_team'
 from Teams as a, Teams as b
 where a.team_name <> b.team_name
 
+-- 1795. Rearrange Products table
+select product_id, 'store1' as store, store1 as price
+from Products
+where store1 is not NULL
+union
+select product_id, 'store2' as store, store2 as price
+from Products
+where store2 is not null
+union
+select product_id, 'store3' as store, store3 as price
+from Products
+where store3 is not null
+
+-- 1587. Bank account summary II
+select u.name, sum(t.amount) as balance
+from Transaction as t, Users as u
+where t.account = u.account
+group by t.account
+having balance > 10000
+
+-- 1852. Convert Date Format
+select date_format(day '%W, %M %e, %Y') as 'day'
+from Days
+
