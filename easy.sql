@@ -13,3 +13,11 @@ where low_fats = 'Y' and recyclable = 'Y'
 select name
 from Customer
 where referee_id <> 2 or referee_id is null
+
+-- # 183. Customer Who never order
+select name as 'Customers'
+from Customers
+where Customers.id not in (
+  select customerId
+  from Orders
+)
