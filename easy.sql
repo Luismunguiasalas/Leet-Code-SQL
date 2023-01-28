@@ -34,4 +34,24 @@ select teacher_id, count(distinct subject_id) as 'cnt'
 from Teacher
 group by teacher_id
 
--- 
+-- 1683. Invalid Tweets
+select tweet_id
+from Tweets
+where char_length(content) < 15
+
+-- 1741. Find Total Time Spent by Each Employee
+select event_day as 'day', emp_id, sum(out_time - in_time) as 'total_time'
+from Employees
+group by event_day, emp_id
+
+-- 1303. Find the Team Size
+select employee_id, count(employee_id) over (partition by team_id) as team_size
+from Employee
+order by employee_id
+
+-- 1350. Students with invalid departments
+select id, name
+from Students
+where Students.department_id not in (select id from Departments)
+
+-- 1571. Warehouse Manager
