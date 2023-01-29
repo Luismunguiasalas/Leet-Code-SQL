@@ -118,8 +118,8 @@ order by problem_id
 
 -- 1777. Product's Price for Each store
 select product_id,
-sum(case when store = 'store1' then price else null) as store1,
-sum(case when store = 'store2' then price else null) as store2,
-sum(case when store = 'store3' then price else null) as store3
+sum(case when store = 'store1' then price else null end) as store1,
+sum(case when store = 'store2' then price else null end) as store2,
+sum(case when store = 'store3' then price else null end) as store3
 from Products
 group by product_id
