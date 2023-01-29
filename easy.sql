@@ -104,3 +104,22 @@ select a.student_name as 'member_A', b.student_name as 'member_B', c.student_nam
 from SchoolA as a, SchoolB as b, SchoolC as c
 where a.student_name != b.student_name and a.student_name!= c.student_name and b.student_name != c.student_name
 and a.student_id != b.student_id and a.student_id != c.student_id and b.student_id != c.student_id
+
+-- 1581. Customer who visited but dit not make any transactions
+select customer_id, count(customer_id) as 'count_no_trans'
+from Visits
+where Visits.visit_id not in (select visit_id from Transactions)
+group by customer_id
+
+-- 2026. Low Quality Problems
+select problem_id
+from Problemswhere (likes / (likes + dislikes)) < .60
+order by problem_id
+
+-- 1777. Product's Price for Each store
+select product_id,
+sum(case when store = 'store1' then price else null) as store1,
+sum(case when store = 'store2' then price else null) as store2,
+sum(case when store = 'store3' then price else null) as store3
+from Products
+group by product_id
