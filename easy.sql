@@ -123,3 +123,17 @@ sum(case when store = 'store2' then price else null end) as store2,
 sum(case when store = 'store3' then price else null end) as store3
 from Products
 group by product_id
+
+-- 1873. Calculate Special Bonus
+select employee_id, (case when (employee_id % 2) = 1 and name not like('M%') then salary else 0 end) as 'bonus'
+from Employees
+order by employee_id
+
+-- 627. Swap Salary
+update Salary
+set sex = case when sex = 'm' then 'f' else 'm' end
+
+-- 196. Delete Duplicate Emails
+delete p1
+from Person as p1, Person as p2
+where p1.email = p2.email and p1.id > p2.id
