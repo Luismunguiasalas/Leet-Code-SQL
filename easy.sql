@@ -137,3 +137,15 @@ set sex = case when sex = 'm' then 'f' else 'm' end
 delete p1
 from Person as p1, Person as p2
 where p1.email = p2.email and p1.id > p2.id
+
+-- 1667. Fix Names in a Table
+select user_id, concat(upper(substring(name, 1,1)), lower(substring(name, 2)))
+from Users
+order by user_id
+
+-- 1484. Group Sold Products By The Date
+select sell_date,
+ count(distinct product) as 'num_sold',
+ group_concat(distinct product order by product) as'products'
+from Activities
+group by sell_date
